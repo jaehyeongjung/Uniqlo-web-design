@@ -1,37 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, { useRef, useEffect, useState } from "react";
+import PropTypes from "prop-types"; // prop-types 패키지 import
 
-function VideoSection({ videoSource, videoText }) {
-  const [scrollY, setScrollY] = useState(0);
+const VideoSection = ({ videoSrc, text, scrollY, index }) => {
+  const [showText, setShowText] = useState(false);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowText(true);
+          } else {
+            setShowText(false);
+          }
+        });
+      },
+      { threshold: 0.6 },
+    );
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (textRef.current) {
+      observer.observe(textRef.current);
+    }
+
+    return () => {
+      if (textRef.current) {
+        observer.unobserve(textRef.current);
+      }
+    };
   }, []);
 
-  const videoHeight = Math.max(100 - scrollY / 5, 0);
-  
+  const videoHeight =
+    index === 0
+      ? Math.max(100 - scrollY / 5, 0)
+      : Math.min(scrollY / 5 + 100, 200);
+  const translateY = index === 0 ? scrollY / 3 : -scrollY / 3;
+
   return (
     <div className="videoWrapper">
       <video
-        className="video"
+        className={index === 0 ? "topVideo" : "bottomVideo"}
         style={{
           height: `${videoHeight}vh`,
-          transform: `translateY(${scrollY / 3}px)`,
+          transform: `translateY(${translateY}px)`,
         }}
         autoPlay
         muted
         loop
       >
-        <source src={videoSource} type="video/mp4" />
+        <source src={videoSrc} type="video/mp4" />
       </video>
-      <div className="videoText">{videoText}</div>
+      <div className={`videoText ${showText ? "fadeIn" : ""}`} ref={textRef}>
+        {text}
+      </div>
     </div>
   );
-}
+};
+
+// propTypes 추가
+VideoSection.propTypes = {
+  videoSrc: PropTypes.string.isRequired, // string 타입 필수
+  text: PropTypes.string.isRequired, // string 타입 필수
+  scrollY: PropTypes.number.isRequired, // number 타입 필수
+  index: PropTypes.number.isRequired, // number 타입 필수
+};
 
 export default VideoSection;
