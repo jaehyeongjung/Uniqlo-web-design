@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import main from './asset/main.mp4';
-import section1 from './asset/section1.mp4';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import VideoSection from "./videoSection";
+import main from "./asset/main.mp4";
+import section1 from "./asset/section1.mp4";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
@@ -11,52 +12,26 @@ function App() {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll);
 
-  const topVideoHeight = Math.max(100 - scrollY / 5, 0);
-  const bottomVideoHeight = Math.min(scrollY / 5 + 100, 200);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="App">
       <div className="mainSection">
-        <div className="videoWrapper">
-          <video
-            className="topVideo"
-            style={{
-              height: `${topVideoHeight}vh`,
-              transform: `translateY(${scrollY / 3}px)`,
-            }}
-            autoPlay
-            muted
-            loop
-          >
-            <source src={main} type="video/mp4" />
-          </video>
-          <div className="videoText">This is the top video text</div>
-        </div>
-
-        <div className="videoWrapper">
-          <video
-            className="bottomVideo"
-            style={{
-              height: `${bottomVideoHeight}vh`,
-              transform: `translateY(-${scrollY / 3}px)`,
-            }}
-            autoPlay
-            muted
-            loop
-          >
-            <source src={section1} type="video/mp4" />
-          </video>
-          <div className="videoText">This is the bottom video text</div>
-        </div>
-        <div className='main_1_container'>
-            <div className='main_1'>
-
-            </div>
-        </div>
+        <VideoSection
+          videoSrc={main}
+          text="옷을 바꾸고, 상식을 바꾸고, 세계를 바꿔 나간다."
+          scrollY={scrollY}
+          index={0}
+        />
+        <VideoSection
+          videoSrc={section1}
+          text="옷의 힘으로, 우리 사회를 아름답게"
+          scrollY={scrollY}
+          index={1}
+        />
       </div>
     </div>
   );
