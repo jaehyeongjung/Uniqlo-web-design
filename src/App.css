@@ -19,92 +19,22 @@
 
 .videoText {
   position: absolute;
-  top: 50%; 
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
   font-weight: bold;
   color: white;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); 
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
   z-index: 2;
   text-align: center;
-  opacity: 0;  /* 시작은 보이지 않게 설정 */
-  transition: opacity 1s ease-out; /* opacity 변화를 부드럽게 */
+  opacity: 0; 
+  transition: opacity 1s ease-out;
 }
 
-.videoText_header {  
-  position: absolute;
-  top: 10%; 
-  left: 21%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); 
-  z-index: 2;
-  text-align: center;
-
-}
-
-.list{
-  height: 1000px;
-  margin-top: -600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.icon {
-  position: absolute;
-  top: 10%; 
-  left: 13%;
-  z-index: 2;
-  transform: translate(-50%, -50%);
-  width: 60px;
-}
-
-.lists { 
-  width: calc(100% - 60px);
-  height: 400px;
-  background-color: white;
-  position: absolute;
-  margin-top: 200px;
-  z-index: 2;
-  border-radius: 8px;
-}
-
-.listHeader {
-  width: calc(100% - 60px);
-  height: 400px;
-  margin-top: -30px;  
-}
-
-.listText {
-  position: absolute;
-  top: 70%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); 
-  z-index: 2;
-  text-align: center;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .fadeIn {
-  opacity: 1; /* 애니메이션 시작 후 보이게 */
+  opacity: 1; 
 }
 
 .background {
@@ -112,3 +42,15 @@
   height: 100%;
 }
 
+@media (max-width: 768px) {
+  .videoText {
+    font-size: 20px;
+    line-height: 1.5; 
+  }
+   
+  .videoText span {
+    display: block; 
+    white-space: normal; 
+  }
+
+}
