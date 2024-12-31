@@ -15,6 +15,7 @@
 .bottomVideo {
   width: 100%;
   object-fit: cover;
+  pointer-events: none;
 }
 
 .videoText {
@@ -28,13 +29,12 @@
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
   z-index: 2;
   text-align: center;
-  opacity: 0; 
+  opacity: 0;
   transition: opacity 1s ease-out;
 }
 
-
 .fadeIn {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .background {
@@ -45,12 +45,20 @@
 @media (max-width: 768px) {
   .videoText {
     font-size: 20px;
-    line-height: 1.5; 
-  }
-   
-  .videoText span {
-    display: block; 
-    white-space: normal; 
+    line-height: 1.5;
   }
 
+  .videoText span {
+    display: block;
+    white-space: normal;
+  }
+}
+
+/* 비디오 컨트롤 숨기기 */
+.background-video::-webkit-media-controls {
+  display: none !important; /* Safari에서 컨트롤 숨기기 */
+}
+
+.background-video::media-controls {
+  display: none !important; /* Chrome에서 컨트롤 숨기기 */
 }

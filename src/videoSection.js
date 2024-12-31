@@ -47,6 +47,7 @@ const VideoSection = ({ videoSrc, text, scrollY, index }) => {
         autoPlay
         muted
         loop
+        playsInline // 모바일에서 전체화면 전환을 방지
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
