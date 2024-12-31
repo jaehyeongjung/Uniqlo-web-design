@@ -19,43 +19,22 @@
 
 .videoText {
   position: absolute;
-  top: 50%; 
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
   font-weight: bold;
   color: white;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); 
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
   z-index: 2;
   text-align: center;
-  opacity: 0;  /* 시작은 보이지 않게 설정 */
-  transition: opacity 1s ease-out; /* opacity 변화를 부드럽게 */
+  opacity: 0; 
+  transition: opacity 1s ease-out;
 }
 
-.videoText_header {  
-  position: absolute;
-  top: 10%; 
-  left: 21%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); 
-  z-index: 2;
-  text-align: center;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .fadeIn {
-  opacity: 1; /* 애니메이션 시작 후 보이게 */
+  opacity: 1; 
 }
 
 .background {
@@ -63,13 +42,15 @@
   height: 100%;
 }
 
-
 @media (max-width: 768px) {
   .videoText {
     font-size: 20px;
-
-
+    line-height: 1.5; 
+  }
+   
+  .videoText span {
+    display: block; 
+    white-space: normal; 
   }
 
-  
 }

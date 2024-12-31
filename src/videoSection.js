@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import PropTypes from "prop-types"; // prop-types 패키지 import
+import PropTypes from "prop-types";
 
 const VideoSection = ({ videoSrc, text, scrollY, index }) => {
   const [showText, setShowText] = useState(false);
@@ -57,12 +57,11 @@ const VideoSection = ({ videoSrc, text, scrollY, index }) => {
   );
 };
 
-// propTypes 추가
 VideoSection.propTypes = {
-  videoSrc: PropTypes.string.isRequired, // string 타입 필수
-  text: PropTypes.string.isRequired, // string 타입 필수
-  scrollY: PropTypes.number.isRequired, // number 타입 필수
-  index: PropTypes.number.isRequired, // number 타입 필수
+  videoSrc: PropTypes.string.isRequired,
+  text: PropTypes.node.isRequired,
+  scrollY: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default VideoSection;
