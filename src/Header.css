@@ -1,0 +1,46 @@
+.HeaderContainer {
+  width: 260px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 10;
+  align-items: center;
+  margin-left: 100px;
+  cursor: pointer;
+}
+
+.HeaderTitle {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 768px) {
+  .HeaderContainer {
+    width: 160px;
+    margin-left: 30px;
+  
+  }
+
+  .HeaderTitle {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    
+  }
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+}

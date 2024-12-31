@@ -16,7 +16,7 @@ const VideoSection = ({ videoSrc, text, scrollY, index }) => {
           }
         });
       },
-      { threshold: 0.6 },
+      { threshold: 0.6 }
     );
 
     if (textRef.current) {
