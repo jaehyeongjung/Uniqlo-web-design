@@ -47,18 +47,6 @@ function App() {
             scrollY={scrollY}
             index={1}
           />
-          <VideoSection
-            videoSrc={main}
-            text={
-              <>
-                <span>옷을 바꾸고, </span>
-                <span>상식을 바꾸고, </span>
-                <span>세계를 바꿔 나간다.</span>
-              </>
-            }
-            scrollY={scrollY}
-            index={2}
-          />
         </div>
       </div>
     </Router>
