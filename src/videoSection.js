@@ -35,7 +35,10 @@ const VideoSection = ({ videoSrc, text, scrollY, index, totalSections }) => {
       : Math.min(scrollY / 5 + 100, 150);
 
   let translateY = 0;
-  const transitionPoint = window.innerHeight * 0.77;
+  const transitionPoint = isMobile
+    ? window.innerHeight * 0.77 // 0.77은 모바일규격일시
+    : window.innerHeight * 0.2;
+
   const transitionOffset = transitionPoint / 3;
 
   if (index === 0) {
@@ -63,6 +66,8 @@ const VideoSection = ({ videoSrc, text, scrollY, index, totalSections }) => {
         style={{
           height: `${videoHeight}vh`,
           transform: `translateY(${translateY}px)`,
+          width: "100%", // 화면 너비에 맞게 비디오 넓이 조정
+          objectFit: "cover", // 비디오가 화면을 가득 채우게 설정
         }}
         autoPlay
         muted
