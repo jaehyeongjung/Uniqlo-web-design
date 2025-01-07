@@ -1,80 +1,88 @@
 import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-const VideoSection = ({ videoSrc, text, scrollY, index }) => {
+const VideoSection = ({ videoSrc, text, scrollY, index, totalSections }) => {
   const [showText, setShowText] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const textRef = useRef(null);
 
-  // 화면 크기 상태 추가
-  const [isMobile, setIsMobile] = useState(false);
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
 
   useEffect(() => {
-    // 화면 크기 확인
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsMobile(true); // 모바일 화면일 때
-      } else {
-        setIsMobile(false); // 모바일 화면이 아닐 때
-      }
-    };
-
-    handleResize(); // 초기 화면 크기 확인
-    window.addEventListener("resize", handleResize); // 화면 크기 변경 시 이벤트 리스너 추가
-
-    return () => window.removeEventListener("resize", handleResize); // 이벤트 리스너 정리
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setShowText(true);
-          } else {
-            setShowText(false);
-          }
-        });
+        entries.forEach((entry) => setShowText(entry.isIntersecting));
       },
       { threshold: 0.6 }
     );
 
-    if (textRef.current) {
-      observer.observe(textRef.current);
-    }
-
-    return () => {
-      if (textRef.current) {
-        observer.unobserve(textRef.current);
-      }
-    };
+    if (textRef.current) observer.observe(textRef.current);
+    return () => observer.disconnect();
   }, []);
 
-  // 모바일 여부에 따른 비디오 높이 계산
-  const videoHeight =
-    index === 0
+  const videoHeight = isMobile
+    ? Math.min(scrollY / 5 + 100, 100)
+    : index === 0
       ? Math.max(100 - scrollY / 5, 0)
-      : isMobile
-        ? Math.min(scrollY / 5 + 100, 100) // 모바일에서는 100vh
-        : Math.min(scrollY / 5 + 100, 150); // 나머지에서는 150vh
+      : Math.min(scrollY / 5 + 100, 150);
 
-  const translateY = index === 0 ? scrollY / 3 : -scrollY / 3;
+  let translateY = 0;
+  const transitionPoint = isMobile
+    ? window.innerHeight * 0.77 // 0.77은 모바일규격일시
+    : window.innerHeight * 0.2;
+
+  const transitionOffset = transitionPoint / 3;
+
+  if (index === 0) {
+    translateY = scrollY / 3;
+  } else if (index === totalSections - 1) {
+    translateY = -scrollY / 3;
+  } else {
+    if (scrollY < transitionPoint) {
+      translateY = -scrollY / 3;
+    } else {
+      translateY = (scrollY - transitionPoint) / 3 - transitionOffset;
+    }
+  }
 
   return (
     <div className="videoWrapper">
       <video
-        className={index === 0 ? "topVideo" : "bottomVideo"}
+        className={
+          index === 0
+            ? "topVideo"
+            : index === totalSections - 1
+              ? "bottomVideo"
+              : "middleVideo"
+        }
         style={{
           height: `${videoHeight}vh`,
           transform: `translateY(${translateY}px)`,
+          width: "100%", // 화면 너비에 맞게 비디오 넓이 조정
+          objectFit: "cover", // 비디오가 화면을 가득 채우게 설정
         }}
         autoPlay
         muted
         loop
-        playsInline // 모바일에서 전체화면 전환을 방지
+        playsInline
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
-      <div className={`videoText ${showText ? "fadeIn" : ""}`} ref={textRef}>
+      <div
+        className={`videoText ${showText ? "fadeIn" : ""}`}
+        ref={textRef}
+        style={{
+          transform: `translate(-50%, -50%) translateY(${translateY}px)`, //비디오 동기화
+        }}
+      >
         {text}
       </div>
     </div>
@@ -86,6 +94,7 @@ VideoSection.propTypes = {
   text: PropTypes.node.isRequired,
   scrollY: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
+  totalSections: PropTypes.number.isRequired,
 };
 
 export default VideoSection;
