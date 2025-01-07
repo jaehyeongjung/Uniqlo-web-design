@@ -35,7 +35,7 @@ const VideoSection = ({ videoSrc, text, scrollY, index, totalSections }) => {
       : Math.min(scrollY / 5 + 100, 150);
 
   let translateY = 0;
-  const transitionPoint = window.innerHeight * 0.7;
+  const transitionPoint = window.innerHeight * 0.77;
   const transitionOffset = transitionPoint / 3;
 
   if (index === 0) {
@@ -71,7 +71,13 @@ const VideoSection = ({ videoSrc, text, scrollY, index, totalSections }) => {
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
-      <div className={`videoText ${showText ? "fadeIn" : ""}`} ref={textRef}>
+      <div
+        className={`videoText ${showText ? "fadeIn" : ""}`}
+        ref={textRef}
+        style={{
+          transform: `translate(-50%, -50%) translateY(${translateY}px)`, //비디오 동기화
+        }}
+      >
         {text}
       </div>
     </div>
