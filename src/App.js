@@ -36,6 +36,7 @@ function App() {
             }
             scrollY={scrollY}
             index={0}
+            totalSections={3}
           />
           <VideoSection
             videoSrc={section1}
@@ -47,6 +48,7 @@ function App() {
             }
             scrollY={scrollY}
             index={1}
+            totalSections={3}
           />
           <VideoSection
             videoSrc={section2}
@@ -58,7 +60,8 @@ function App() {
               </>
             }
             scrollY={scrollY}
-            index={1}
+            index={2}
+            totalSections={3}
           />
         </div>
       </div>
