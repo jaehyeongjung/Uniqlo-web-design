@@ -1,0 +1,20 @@
+.HeaderMenu {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.HeaderMenu img {
+  width: 100%;
+}
+
+.HaederMenuBar {
+  width: 80%;
+  height: 10%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); 
+}

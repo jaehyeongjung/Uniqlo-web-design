@@ -5,7 +5,7 @@ import VideoSection from "./videoSection";
 import main from "./asset/main.mp4";
 import section1 from "./asset/section1.mp4";
 import section2 from "./asset/section2.mp4";
-import Header from "./Header.js";
+import Header from "./Component/Header/Header";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);

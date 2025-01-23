@@ -1,9 +1,11 @@
 .App {
   font-family: Arial, sans-serif;
+  
 }
 
 .mainSection {
   position: relative;
+  background-color: aquamarine;
 }
 
 .videoWrapper {
