@@ -1,5 +1,5 @@
 import React from "react";
-import uniqloLogo from "../../asset/uniqloLogo.png";
+import uniqloLogo from "../../asset/img/uniqloLogo.png";
 import "./Header.css";
 import SideMenu from "../SideMenu/SideMenu";
 

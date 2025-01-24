@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import VideoSection from "./videoSection";
-import main from "./asset/main.mp4";
-import section1 from "./asset/section1.mp4";
-import section2 from "./asset/section2.mp4";
+import main from "./asset/video/main.mp4";
+import section1 from "./asset/video/section1.mp4";
+import section2 from "./asset/video/section2.mp4";
 import Header from "./Component/Header/Header";
 
 function App() {
