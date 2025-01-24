@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../../asset/uniqloLogo.png";
 import "./Header.css";
-import HeaderMenu from "../HeaderMenu/HeaderMenu";
+import SideMenu from "../SideMenu/SideMenu";
 
 const Header = () => {
   const handleClick = () => {
@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <>
       <div className="HeaderContainer">
-        <HeaderMenu />
+        <SideMenu />
         <div className="HeaderTitleAndLogo" onClick={handleClick}>
           <div className="HeaderTitle">UNIQLO</div>
           <img src={Icon} className="icon" alt="Icon" />
