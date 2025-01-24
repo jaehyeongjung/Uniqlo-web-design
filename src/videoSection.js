@@ -66,8 +66,8 @@ const VideoSection = ({ videoSrc, text, scrollY, index, totalSections }) => {
         style={{
           height: `${videoHeight}vh`,
           transform: `translateY(${translateY}px)`,
-          width: "100%", // 화면 너비에 맞게 비디오 넓이 조정
-          objectFit: "cover", // 비디오가 화면을 가득 채우게 설정
+          width: "100%",
+          objectFit: "cover",
         }}
         autoPlay
         muted

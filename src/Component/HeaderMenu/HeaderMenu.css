@@ -1,0 +1,69 @@
+.HeaderMenu {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.HeaderMenu img {
+  width: 100%;
+}
+
+.HeaderMenuBar {
+  width: 80%;
+  height: 10%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .HeaderMenu {
+    width: 70px;
+    height: 30px;
+    gap: 4px;
+  }
+
+  .HeaderMenuBar {
+    width: 140%;
+    height: 10%;
+  }
+
+  .HeaderMenuItemsText {
+    font-size: 19px !important;
+    width: 150px;
+    color: red !important;
+  }
+
+  .HeaderMenuItems {
+    background-color: white;
+  }
+}
+
+.HeaderMenuItems {
+  position: absolute;
+  top: 300px;
+  width: 75px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.HeaderMenuItemsText {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.HeaderMenuItemsText:hover {
+  color: red;
+}
+
+.HeaderMenuBar.open1 {
+  display: none;
+}
