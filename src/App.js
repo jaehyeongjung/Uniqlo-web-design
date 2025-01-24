@@ -64,7 +64,7 @@ function App() {
             totalSections={3}
           />
         </div>
-        <div className="footer">ddddddd</div>
+        <div className="footer">dd</div>
       </div>
     </Router>
   );
