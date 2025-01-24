@@ -1,11 +1,9 @@
 .App {
   font-family: Arial, sans-serif;
-  
 }
 
 .mainSection {
-  position: relative;
-  background-color: aquamarine;
+
 }
 
 .videoWrapper {
@@ -54,13 +52,19 @@
     display: block;
     white-space: normal;
   }
+
+  
 }
 
-/* 비디오 컨트롤 숨기기 */
 .background-video::-webkit-media-controls {
   display: none !important; /* Safari에서 컨트롤 숨기기 */
 }
 
 .background-video::media-controls {
   display: none !important; /* Chrome에서 컨트롤 숨기기 */
+}
+
+.footer {
+  height: 1165px;
+  margin-top: -1000px;
 }
