@@ -1,4 +1,4 @@
-.HeaderMenu {
+.SideMenu {
   width: 40px;
   height: 40px;
   display: flex;
@@ -7,11 +7,11 @@
   justify-content: center;
 }
 
-.HeaderMenu img {
+.SideMenu img {
   width: 100%;
 }
 
-.HeaderMenuBar {
+.SideMenuBar {
   width: 80%;
   height: 10%;
   background-color: white;
@@ -20,29 +20,29 @@
 }
 
 @media (max-width: 768px) {
-  .HeaderMenu {
+  .SideMenu {
     width: 70px;
     height: 30px;
     gap: 4px;
   }
 
-  .HeaderMenuBar {
+  .SideMenuBar {
     width: 140%;
     height: 10%;
   }
 
-  .HeaderMenuItemsText {
+  .SideMenuItemsText {
     font-size: 19px !important;
     width: 150px;
     color: red !important;
   }
 
-  .HeaderMenuItems {
+  .SideMenuItems {
     background-color: white;
   }
 }
 
-.HeaderMenuItems {
+.SideMenuItems {
   position: absolute;
   top: 300px;
   width: 75px;
@@ -53,17 +53,17 @@
   border-radius: 8px;
 }
 
-.HeaderMenuItemsText {
+.SideMenuItemsText {
   font-size: 50px;
   font-weight: bold;
   color: white;
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
 
-.HeaderMenuItemsText:hover {
+.SideMenuItemsText:hover {
   color: red;
 }
 
-.HeaderMenuBar.open1 {
+.SideMenuBar.open1 {
   display: none;
 }

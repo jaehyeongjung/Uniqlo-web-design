@@ -1,20 +1,20 @@
 import React from "react";
-import Icon from "../../asset/uniqloLogo.png";
+import uniqloLogo from "../../asset/img/uniqloLogo.png";
 import "./Header.css";
-import HeaderMenu from "../HeaderMenu/HeaderMenu";
+import SideMenu from "../SideMenu/SideMenu";
 
 const Header = () => {
   const handleClick = () => {
-    window.location.href = "/";
+    window.scrollTo({ top: 0, behavior: "smooth" }); // 맨 위로 부드럽게 스크롤
   };
 
   return (
     <>
       <div className="HeaderContainer">
-        <HeaderMenu />
+        <SideMenu />
         <div className="HeaderTitleAndLogo" onClick={handleClick}>
           <div className="HeaderTitle">UNIQLO</div>
-          <img src={Icon} className="icon" alt="Icon" />
+          <img src={uniqloLogo} className="uniqloLogo" alt="uniqloLogo" />
         </div>
       </div>
     </>
