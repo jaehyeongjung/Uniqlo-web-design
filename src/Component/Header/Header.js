@@ -5,7 +5,7 @@ import SideMenu from "../SideMenu/SideMenu";
 
 const Header = () => {
   const handleClick = () => {
-    window.location.href = "/";
+    window.scrollTo({ top: 0, behavior: "smooth" }); // 맨 위로 부드럽게 스크롤
   };
 
   return (
